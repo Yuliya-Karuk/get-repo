@@ -1,19 +1,32 @@
 <meta charset="utf-8">
 <script type="text/javascript">
 
-	function generateMassive(n){
+	function generateMassive(n){ //функция создает массив из 1, 2, до n
 		
-		var massive = []
+		var massive = [];
 		
 		for( var i = 1; i <= n; i++) {
-			massive.push(i)
+			massive.push(i);
 		}
-		return massive
+		return massive;
 
 	}	
 
-	var x = generateMassive(10);
-	alert(x)
+	
 
+	function sumNumbers(massive) { //функция считает сумму чисел из массива
+		var result = 0;
+		for (var i = 0; i < massive.length ; i++) {
+			result = result + massive[i];
+		}
+		return result
+	}
+	
+	
+
+
+	var array= generateMassive(10); //вызов и вывод первой функции
+	alert(array); 
+	alert(sumNumbers(array));// вызов и вывод второй функции
 
 </script>
