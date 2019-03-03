@@ -49,11 +49,24 @@
 		return min
 	}
 
+	function evenNumbers(massive) { //функция выбирает четные числа из массива чисел
+		var evenMassive = [];
+
+		for (var i = 0; i < massive.length; i++) {
+
+			if (massive[i] % 2 == 0) {
+				evenMassive.push(massive[i]);
+			}
+
+		}
+		return evenMassive;
+	}
 	 
 	var array= generateMassive(10); //вызов первой функции
 	alert(array); 
 	alert(sumNumbers(array));// вызов и вывод второй функции
 	alert(maxNumbers(array));// вызов и вывод третьей функции 
 	alert(minNumbers(array));// вызов и вывод четвертой функции 
-	
+	alert(evenNumbers(array));// вызов и вывод пятой функции 
+
 </script>
