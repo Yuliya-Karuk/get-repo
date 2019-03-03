@@ -23,7 +23,7 @@
 	}
 	
 	
-	function maxNumbers(massive) { //функция выбирает максимальнео число из массива чисел
+	function maxNumbers(massive) { //функция выбирает максимальное число из массива чисел
 		var max = massive[0];
 
 		for (var i = 0; i < massive.length; i++) {
@@ -36,10 +36,24 @@
 		return max
 	}
 	
+	 function minNumbers(massive) { //функция выбирает минимальное число из массива чисел
+		var min = massive[0];
 
+		for (var i = 0; i < massive.length; i++) {
 
+			if (massive[i] < min) {
+				min = massive[i];
+			}
+
+		}
+		return min
+	}
+
+	 
 	var array= generateMassive(10); //вызов первой функции
 	alert(array); 
 	alert(sumNumbers(array));// вызов и вывод второй функции
 	alert(maxNumbers(array));// вызов и вывод третьей функции 
+	alert(minNumbers(array));// вызов и вывод четвертой функции 
+	
 </script>
