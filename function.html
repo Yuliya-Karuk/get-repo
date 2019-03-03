@@ -23,10 +23,23 @@
 	}
 	
 	
+	function maxNumbers(massive) { //функция выбирает максимальнео число из массива чисел
+		var max = massive[0];
+
+		for (var i = 0; i < massive.length; i++) {
+
+			if (massive[i] > max) {
+				max = massive[i];
+			}
+
+		}
+		return max
+	}
+	
 
 
-	var array= generateMassive(10); //вызов и вывод первой функции
+	var array= generateMassive(10); //вызов первой функции
 	alert(array); 
 	alert(sumNumbers(array));// вызов и вывод второй функции
-
+	alert(maxNumbers(array));// вызов и вывод третьей функции 
 </script>
