@@ -49,6 +49,23 @@ fruits = new
 print(fruits)
 print(exotic_fruit)
 
+# Задача-3:
+# Дан произвольный список из целых чисел.
+# Получите НОВЫЙ список из элементов исходного, выполнив следующие условия:
+# если элемент кратен двум, то разделить его на 4, если не кратен, то умножить на два.
+
+numbers = [2, 89, 34, 23, 28, 43, 56]
+print("Начальный список ", numbers)
+new_numbers = []
+for i in numbers:
+    if i%2 == 0:
+        i = int(i/4)
+        new_numbers.append(i)
+    else:
+        i= i*2
+        new_numbers.append(i)
+print("Конечный список ", new_numbers)
+
 
 
 
