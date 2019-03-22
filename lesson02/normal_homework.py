@@ -60,10 +60,26 @@ print_month = 1
 if month[0] == "0":
     month = month[1]
     print_month = dct2[month]
-elif day[0] == "1":
+elif month[0] == "1":
     print_month = dct2[month]
 
 print(print_day, print_month, dd[6:], "года")
+
+# Задача-3: Напишите алгоритм, заполняющий список произвольными целыми числами
+# в диапазоне от -100 до 100. В списке должно быть n - элементов.
+# Подсказка:
+# для получения случайного числа используйте функцию randint() модуля random
+
+import random
+
+n = int(input("Введите количество элементов, которое будет в массиве - "))
+rand_numbers = []
+for i in range(n):
+    x = random.randint(-100, 100)
+    rand_numbers.append(x)
+print(rand_numbers)
+
+
 
 
 
