@@ -47,24 +47,24 @@ while x < 100:
 
 print(tower)
 
-# пусть number = 19. Вычисление размерности этажа. Размерность = n
+# пусть number = 40. Вычисление размерности этажа. Размерность = n
 user_number = int(input("Введите номер комнаты - "))
 n = 1
 number = user_number
 while number > 0:
     number = number - n**2
-    if number < 0:
+    if number <= 0:
         number = number + n**2
         break
     else:
         n = n + 1
 
 
-# пусть number = 19. Вычисление номера массива из массивов одинаковой размерности. Номер массива = m
+# пусть number = 40. Вычисление номера массива из массивов одинаковой размерности. Номер массива = m
 m = 1
 while number > 0:
     number = number - n
-    if number < 0:
+    if number <= 0:
         break
     m = m + 1
 
