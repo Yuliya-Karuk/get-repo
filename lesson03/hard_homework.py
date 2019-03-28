@@ -91,16 +91,64 @@ integ = result(lst_natur, sign)
 
 print(integ)
 
+# Задание-2:
+# Дана ведомость расчета заработной платы (файл "data/workers").
+# Рассчитайте зарплату всех работников, зная что они получат полный оклад,
+# если отработают норму часов. Если же они отработали меньше нормы,
+# то их ЗП уменьшается пропорционально, а за заждый час переработки
+# они получают удвоенную ЗП, пропорциональную норме.
+# Кол-во часов, которые были отработаны, указаны в файле "data/hours_of"
 
-"""Fin = open("workers.txt", "r")
 
-str1 = Fin.readline() # str1 = 1
-str2 = Fin.readline() # str2 = 2
+file_worker = open("workers.txt", "r")
+file_hour = open("hours_of.txt", "r")
 
-str = Fin.readline().split()
-print(str1)
-print(str[0])
-print(str[1])
-  # работа с файлами
+def counter(X):
+    count = 0
+    for line in X:
+        count += 1
+    return count
 
-Fin.close()"""
+row_worker = counter(file_worker)
+row_hour = counter(file_hour)
+
+file_worker.seek(0)
+file_hour.seek(0)
+
+def reading(file, n):
+    new = []
+    d = {}
+    for i in range(n):
+        str = file.readline().split()
+        new.append(str)
+    del new[0]
+    return new
+
+lst1 = reading(file_worker, row_worker)
+lst2 = reading(file_hour, row_hour)
+
+for i in range(len(lst1)):
+    del lst2[i][0]
+    del lst1[i][0], lst1[i][2]
+
+for i in lst1:
+    for j in lst2:
+        if i[0] == j[0]:
+            i.append(j[1])
+
+# month_salary = a[i][1], needed_hours = a[i][2], worked_hours = a[i][3]
+salary = []
+
+for i in lst1:
+    if int(i[3]) <= int(i[2]):
+        sal = int(int(i[1])/ int(i[2]) * int(i[3]))
+    else:
+        sal = int(int(i[1]) + int(i[1]) / int(i[2]) * 2 * (int(i[3])-int(i[2])))
+    print('Заработная плата', i[0], sal)
+
+file_worker.close
+file_hour.close
+
+
+
+
