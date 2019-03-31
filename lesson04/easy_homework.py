@@ -11,3 +11,14 @@ import random
 lst_beg = [random.randint(-10, 10) for i in range(5)]
 lst_last = [(lambda i: i*i)(i) for i in lst_beg]
 print('Начальный список - ', lst_beg, 'Конечный список - ', lst_last)
+
+# Задание-2:
+# Даны два списка фруктов.
+# Получить список фруктов, присутствующих в обоих исходных списках.
+
+fruits = ["яблоко", "банан", "киви", "арбуз", "клубника", "слива", "черешня", "инжир", "хурма"]
+exotic_fruit = ["инжир", "маракуйа", "ананас", "хурма"]
+print('Список фруктов - ', fruits, '\nСписок экзотических фруктов - ', exotic_fruit)
+
+inter = [i for i in fruits if i in exotic_fruit]
+print('Фрукты в обоих списках', inter)
