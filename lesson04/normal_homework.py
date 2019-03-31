@@ -107,14 +107,25 @@ print(result)
 # Найдите и выведите самую длинную последовательность одинаковых цифр
 # в вышезаполненном файле.
 
-"""import random
+import random
 number = [str(random.randint(0, 9)) for i in range(250)]
 number = ''.join(number)
-print(number)
 
-file = open('number.txt', 'a')
-file.write(number)"""
-x = "486895742134655562041086293368375182721683468584637458427868162422548419802262328627"
+with open ('number.txt', 'w') as file_number:
+    file_number.write(number)
 
+with open ('number.txt', 'r') as file_read:
+    data = file_read.readlines()  # read ALL the lines!
+    print(data)
 
+data = data[0]
 
+maxim = ''
+for i in range(1, 10):
+    pattern = re.compile('[' + str(i) + ']{1,}')
+    result = pattern.findall(data)
+    if len(result) > 0:
+        if len(max(result)) > len(maxim):
+            maxim = max(result)
+
+print(maxim)
