@@ -35,6 +35,11 @@ files = os.listdir(path=os.getcwd())
 print('Файлы в текущей директории', files)
 
 
+# Задача-2:
+# Напишите скрипт, отображающий папки текущей директории.
+
+files = [i for i in os.listdir(path=os.getcwd()) if os.path.isdir(i)]
+print('Папки в текущей директории', files)
 
 
 
