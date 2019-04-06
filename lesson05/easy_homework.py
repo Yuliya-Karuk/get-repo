@@ -5,7 +5,7 @@
 
 import os
 
-print('Путь к текущей директории', os.getcwd())
+'''print('Путь к текущей директории', os.getcwd())
 files = os.listdir(path=os.getcwd())
 print('Файлы в текущей директории', files)
 
@@ -40,6 +40,23 @@ print('Файлы в текущей директории', files)
 
 files = [i for i in os.listdir(path=os.getcwd()) if os.path.isdir(i)]
 print('Папки в текущей директории', files)
+
+# Задача-3:
+# Напишите скрипт, создающий копию файла, из которого запущен данный скрипт.'''
+
+import shutil
+import sys
+
+file_path = sys.argv[0]
+name = file_path.split("/")[-1]
+name = file_path.split(".")[0]
+print(name)
+shutil.copyfile(file_path, f'{name}.copy.py')
+
+# Проверка создалась ли копия в текущей директории
+files = [i for i in os.listdir(path=os.getcwd()) if os.path.isfile(i)]
+print('Файлы в текущей директории', files)
+
 
 
 
