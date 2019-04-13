@@ -145,8 +145,8 @@ for i in lst1:
         sal = int(int(i[1]) + int(i[1]) / int(i[2]) * 2 * (int(i[3])-int(i[2])))
     print('Заработная плата', i[0], sal)
 
-file_worker.close
-file_hour.close
+file_worker.close()
+file_hour.close()
 
 # Задание-3:
 # Дан файл ("data/fruits") со списком фруктов.
