@@ -53,6 +53,7 @@ class Cards:
         self.line_1 = self.numbers[0:5]
         self.line_2 = self.numbers[5:10]
         self.line_3 = self.numbers[10:]
+        self.counter = 0
 
         def gener(lst):
             # числа сортируются по порядку, в каждую строку добавляется по 4 постых значения
@@ -76,19 +77,59 @@ class Cards:
         print(self.row_3)
         print(f'------------------------------')
 
-    def crossout(self, number):
+    def check_number(self, number):
+        # функция проверяет есть ли выпавшее число на карточке
+        if number in self.numbers:
+            return True
+        else:
+            return False
+
+    def cross_out(self, number):
+        # функция, которая зачеркивает выпавшее число, если оно есть на карточке
         if number in self.numbers:
             self.row_1 = re.sub(f'{number}', '-', self.row_1)
             self.row_2 = re.sub(f'{number}', '-', self.row_2)
             self.row_3 = re.sub(f'{number}', '-', self.row_3)
             return self.wrapper()
-        elif self.name == 'Компьютера':
-            pass
         else:
-            print('цифры на карточке нет - вы проиграли')
+            return self.wrapper()
 
+    @staticmethod
+    def gener():
+        # функция генерирует случайный список из заданных чисел, и показывает их по одному при вытягивании числа
+        numbers = random.sample(range(1, 91), 90)
+        print(numbers)
+        i = 0
+        while i < len(numbers):
+            yield [numbers[i], i]
+            i = i + 1
 
+    def check_card(self):
+        # функция проверяет количество зачеркнутых чисел. чтобы выбрать победителя
+        num = [i for i in self.row_1 if i == '-'] + [i for i in self.row_2 if i == '-'] + [i for i in self.row_3 if i == '-']
+        return len(num)
 
+    @staticmethod
+    def winning(answer):
+        # функция проверяет кто выиграл после каждого хода, или если игрок решил прервать игру
+        win_1 = loto_1.check_card()
+        win_2 = loto_2.check_card()
+        if answer == 'x' or answer == 'y':
+            if win_1 == 15:
+                print('Выигрывает участник')
+            elif win_2 == 15:
+                print('Выигрывает компьютер')
+            else:
+                pass
+        else:
+            if win_1 > win_2:
+                print('Выигрывает участник')
+            elif win_1 == win_2:
+                print('Ничья')
+            else:
+                print('Выигрывает компьютер')
+
+gen_1 = Cards.gener()
 
 loto_1 = Cards('Участника')
 loto_2 = Cards('Компьютера')
@@ -101,18 +142,42 @@ print('''Если вы выбираете 'зачеркнуть':
     Если цифры на карточке нет - вы проигрываете и игра завершается.
 Если вы выбраете "продолжить":
     Если цифра есть на карточке - вы проигрываете и игра завершается.
-    Если цифры на карточке нет - игра продолжается''')
+    Если цифры на карточке нет - игра продолжается
+Чтобы зачеркнуть введите  - x, продолжить - y, для выхода нажмите - q''')
 loto_1.wrapper()
 loto_2.wrapper()
 
-loto_1.crossout(15)
-while True:
-    number = random.randint(1, 91)
-    answer = input(f'Выпало число - {number}, чтобы зачеркнуть введите  - x, продолжить - y, для выхода нажмите - q')
-    if answer == 'x':
-        loto_2.crossout(number)
-        loto_1.crossout(number)
 
+while True:
+    # цикл, в котором вызывется генератор для вывода бочонка, затем идут проверки на наличие бочонка в карточках
+    # и проверка на количество зачеркнутых бочонков
+    number = next(gen_1)[0]
+    counter = int(next(gen_1)[1]/2)
+    check_1 = loto_1.check_number(number)
+    answer = input(f'Выпало число - {number}, осталось {89-counter} чисел - ')
+    if answer == 'x':
+        if check_1:
+            loto_2.cross_out(number)
+            loto_1.cross_out(number)
+            Cards.winning(answer)
+        else:
+            print('Вы проиграли')
+            break
+    elif answer == 'y':
+        if check_1:
+            print('Вы проиграли')
+            break
+        else:
+            loto_2.cross_out(number)
+            loto_1.cross_out(number)
+            Cards.winning(answer)
+            continue
+    elif answer == 'q':
+        Cards.winning(answer)
+        break
+    else:
+        print('Неправильный ввод расценивается как выход')
+        break
 
 
 
