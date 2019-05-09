@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+menu {
+    width: 490px;
+      height: 10px;
+      font-family: Montserrat;
+      font-size: 14px;
+      font-weight: 300;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 3.43;
+      letter-spacing: 1.4px;
+      text-align: right;
+      color: #8c8c8c;
+}
+
+
+.slider {
+    height: 800px;
+    background-image: url(img/search.svg);
+}
